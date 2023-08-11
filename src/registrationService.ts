@@ -23,6 +23,7 @@ export const registerMerchant = async (
   );
 
   try {
+    console.log("Calling register function...");
     const tx = await contract.register(merchantAddress, arweaveID);
     await tx.wait(); // Wait for transaction to be mined
   } catch (err) {

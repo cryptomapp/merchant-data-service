@@ -1,5 +1,9 @@
 import express from "express";
-import { isValidMerchantData, MerchantData } from "./MerchantData";
+import {
+  isValidMerchantData,
+  MerchantData,
+  merchantDataToJson,
+} from "./MerchantData";
 import bundlrService from "./bundlrService";
 import { registerMerchant } from "./registrationService";
 
@@ -7,6 +11,8 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   const data: MerchantData = req.body;
+  data.latitude = +data.latitude;
+  data.longitude = +data.longitude;
 
   if (!isValidMerchantData(data)) {
     return res.status(400).send("Invalid merchant data.");
@@ -19,6 +25,7 @@ router.post("/", async (req, res) => {
     const arweaveLink = `https://arweave.net/${response.id}`;
 
     // Call the register function after data is uploaded to Arweave
+    console.log("Registering merchant...");
     await registerMerchant(data.merchantAddress, response.id);
 
     return res.json({ link: arweaveLink });
