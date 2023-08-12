@@ -1,9 +1,9 @@
 import { ethers } from "ethers";
 
 const BUILDBEAR_NETWORK =
-  "https://rpc.buildbear.io/vivacious-shaak-ti-0a200963";
+  "https://rpc.buildbear.io/past-raymus-antilles-a33a62e5";
 const PRIVATE_KEY = process.env.BUILDBEAR_PRIVATE_KEY || "";
-const MERCHANT_REGISTRY_ADDRESS = "0xF16F5673fb6C003B0F0e41028a026170576Cb380";
+const MERCHANT_REGISTRY_ADDRESS = "0xC1F77354a9cAF1CC72E963A5EcFe1B782bDdDd47";
 const pathToABI =
   "../../cryptom-protocol/artifacts/contracts/MerchantRegistry.sol/MerchantRegistry.json";
 const merchantRegistryArtifact = require(pathToABI);
