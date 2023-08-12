@@ -5,7 +5,7 @@ const BUILDBEAR_NETWORK =
 const PRIVATE_KEY = process.env.BUILDBEAR_PRIVATE_KEY || "";
 const MERCHANT_REGISTRY_ADDRESS = "0xC1F77354a9cAF1CC72E963A5EcFe1B782bDdDd47";
 const pathToABI =
-  "../../cryptom-protocol/artifacts/contracts/MerchantRegistry.sol/MerchantRegistry.json";
+  "../contractsArtifacts/MerchantRegistry.sol/MerchantRegistry.json";
 const merchantRegistryArtifact = require(pathToABI);
 const MERCHANT_REGISTRY_ABI = merchantRegistryArtifact.abi;
 
