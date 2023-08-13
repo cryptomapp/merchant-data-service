@@ -25,9 +25,6 @@ jobs:
       - name: Deploy Docker Image
         env:
           EC_PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
-          MATIC_MUMBAI_PRIVATE_KEY: ${{ secrets.MATIC_MUMBAI_PRIVATE_KEY }}
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          RPC_URL: ${{ secrets.RPC_URL }}
         run: |
           mkdir -p ~/.ssh
           echo "$EC_PRIVATE_KEY" > ~/.ssh/ec2_private_key.pem
@@ -37,5 +34,5 @@ jobs:
             echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
             docker pull s22630/mds:latest
             docker rm -f mds || true
-            docker run -d -e MATIC_MUMBAI_PRIVATE_KEY=$MATIC_MUMBAI_PRIVATE_KEY -e PRIVATE_KEY=$PRIVATE_KEY -e RPC_URL=$RPC_URL -p 3000:3000 --name mds s22630/mds:latest
+            docker run -d -e MATIC_MUMBAI_PRIVATE_KEY=${{ secrets.MATIC_MUMBAI_PRIVATE_KEY }} -e PRIVATE_KEY=${{ secrets.PRIVATE_KEY }} -e RPC_URL=${{ secrets.RPC_URL }} -p 3000:3000 --name mds s22630/mds:latest
           EOF
