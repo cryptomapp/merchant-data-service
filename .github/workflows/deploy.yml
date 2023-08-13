@@ -13,9 +13,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Docker Login
-        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-
       - name: Build Docker Image
         run: docker build -t mds .
 
@@ -34,6 +31,7 @@ jobs:
           chmod 400 ~/.ssh/ec2_private_key.pem
           ssh -o "StrictHostKeyChecking=no" -i ~/.ssh/ec2_private_key.pem ec2-user@ec2-3-76-205-25.eu-central-1.compute.amazonaws.com << 'EOF'
             sudo su
+            echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
             docker pull s22630/mds:latest
             docker rm -f mds || true
             docker run -d -e MATIC_MUMBAI_PRIVATE_KEY=$MATIC_MUMBAI_PRIVATE_KEY -e PRIVATE_KEY=$PRIVATE_KEY -e RPC_URL=$RPC_URL -p 3000:3000 --name mds s22630/mds:latest
