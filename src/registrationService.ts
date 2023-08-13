@@ -1,9 +1,8 @@
 import { ethers } from "ethers";
 
-const BUILDBEAR_NETWORK =
-  "https://rpc.buildbear.io/past-raymus-antilles-a33a62e5";
+const RPC_URL = "https://goerli.infura.io/v3/2a3a32cd916b4f63aaf5a965b6ca6ce0";
 const PRIVATE_KEY = process.env.BUILDBEAR_PRIVATE_KEY || "";
-const MERCHANT_REGISTRY_ADDRESS = "0xC1F77354a9cAF1CC72E963A5EcFe1B782bDdDd47";
+const MERCHANT_REGISTRY_ADDRESS = "0x3FB3633b64fbe861e6Ee9Cb07Db07597278A1587";
 const pathToABI =
   "../contractsArtifacts/MerchantRegistry.sol/MerchantRegistry.json";
 const merchantRegistryArtifact = require(pathToABI);
@@ -13,7 +12,7 @@ export const registerMerchant = async (
   merchantAddress: string,
   arweaveID: string
 ) => {
-  const provider = new ethers.JsonRpcProvider(BUILDBEAR_NETWORK);
+  const provider = new ethers.JsonRpcProvider(RPC_URL);
   const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
 
   const contract = new ethers.Contract(
