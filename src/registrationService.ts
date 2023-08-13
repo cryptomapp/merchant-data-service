@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 
-const RPC_URL = "https://goerli.infura.io/v3/2a3a32cd916b4f63aaf5a965b6ca6ce0";
-const PRIVATE_KEY = process.env.BUILDBEAR_PRIVATE_KEY || "";
+const RPC_URL = process.env.RPC_URL || "";
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
 const MERCHANT_REGISTRY_ADDRESS = "0x3FB3633b64fbe861e6Ee9Cb07Db07597278A1587";
 const pathToABI =
   "../contractsArtifacts/MerchantRegistry.sol/MerchantRegistry.json";
