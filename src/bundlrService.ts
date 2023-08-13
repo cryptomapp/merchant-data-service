@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const MATIC_MUMBAI_PRIVATE_KEY = process.env.MATIC_MUMBAI_PRIVATE_KEY || "";
+const TESTNET_URL = process.env.TESTNET_URL || "";
 
 const createBundlrInstance = () => {
   return new Bundlr(
