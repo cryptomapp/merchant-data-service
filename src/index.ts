@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import uploadController from "./uploadController";
 import fundController from "./fundController";
 
@@ -10,6 +11,17 @@ const PORT = 3000;
 
 // Use Express's built-in JSON parser
 app.use(express.json());
+
+// Use CORS
+app.use(cors());
+
+app.use(
+  cors({
+    origin: "https://cryptomapp.vercel.app",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 // Mount the controllers
 app.use("/upload", uploadController);
