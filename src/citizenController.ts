@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
     res.json(result);
   } catch (error) {
     console.error(error);
-    res.status(422).send("Error registering citizen", error);
+    res.status(422).send(`Error registering citizen: ${error}`);
   }
 });
 
