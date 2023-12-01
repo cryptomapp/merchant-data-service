@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import uploadController from "./uploadController";
 import fundController from "./fundController";
+import citizenController from "./citizenController";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(
 // Mount the controllers
 app.use("/upload", uploadController);
 app.use("/fund", fundController);
+app.use("/citizen", citizenController);
 
 // Simple health check endpoint (optional but good to have)
 app.get("/health", (req, res) => {
