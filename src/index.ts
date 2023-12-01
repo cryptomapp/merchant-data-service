@@ -18,7 +18,7 @@ app.use(cors());
 
 app.use(
   cors({
-    origin: "https://cryptomapp.vercel.app",
+    origin: ["https://cryptomapp.vercel.app", "http://localhost:9000"],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })

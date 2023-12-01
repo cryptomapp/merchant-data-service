@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
     res.json(result);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error registering citizen");
+    res.status(422).send("Error registering citizen");
   }
 });
 
@@ -42,8 +42,14 @@ const registerCitizen = async (
     return { success: false, message: "Citizen is already registered" };
   }
 
-  // Check the referrer's EXP
-  const referrerEXP = await reputationRegistryContract.getEXP(referrerAddress);
+  // Check if the referrer address is valid before calling getEXP
+  let referrerEXP = 0;
+  if (
+    ethers.isAddress(referrerAddress) &&
+    referrerAddress !== ethers.ZeroAddress
+  ) {
+    referrerEXP = await reputationRegistryContract.getEXP(referrerAddress);
+  }
   const effectiveReferrerAddress =
     referrerEXP > 0 ? referrerAddress : ethers.ZeroAddress;
 
