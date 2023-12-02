@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
   try {
     // Interact with your smart contract here
     const result = await registerCitizen(citizenAddress, referrerAddress);
-    res.json(result + "dupa");
+    res.json(result + "dupa1");
   } catch (error) {
     console.error(error);
     res
@@ -37,8 +37,8 @@ const registerCitizen = async (
   );
 
   // Check if the citizen is already registered
-  // const isRegistered =
-  //   (await reputationRegistryContract.getEXP(citizenAddress)) > 0;
+  const isRegistered =
+    (await reputationRegistryContract.getEXP(citizenAddress)) > 0;
 
    // If citizen is already registered, return a message indicating so
   // if (isRegistered) {
