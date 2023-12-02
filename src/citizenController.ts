@@ -29,12 +29,12 @@ const registerCitizen = async (
   referrerAddress: string
 ) => {
   const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
-  // const wallet = new ethers.Wallet(process.env.PRIVATE_KEY || "", provider);
-  // const reputationRegistryContract = new ethers.Contract(
-  //   "0x4D280BEBD203d9BbDaE2bBc4f0F25C64fB198613",
-  //   ReputationRegistryABI.abi,
-  //   wallet
-  // );
+  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY || "", provider);
+  const reputationRegistryContract = new ethers.Contract(
+    "0x4D280BEBD203d9BbDaE2bBc4f0F25C64fB198613",
+    ReputationRegistryABI.abi,
+    wallet
+  );
 
   // Check if the citizen is already registered
   // const isRegistered =
