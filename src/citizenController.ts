@@ -37,8 +37,8 @@ const registerCitizen = async (
   );
 
   // Check if the citizen is already registered
-  const isRegistered =
-    (await reputationRegistryContract.getEXP(citizenAddress)) > 0;
+  // const isRegistered =
+  //   (await reputationRegistryContract.getEXP(citizenAddress)) > 0;
 
    // If citizen is already registered, return a message indicating so
   // if (isRegistered) {
