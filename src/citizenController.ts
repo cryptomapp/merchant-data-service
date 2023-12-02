@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
   try {
     // Interact with your smart contract here
     const result = await registerCitizen(citizenAddress, referrerAddress);
-    res.json(result + "dupa2");
+    res.json(result);
   } catch (error) {
     console.error(error);
     res
