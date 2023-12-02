@@ -16,7 +16,11 @@ router.post("/", async (req, res) => {
     res.json(result);
   } catch (error) {
     console.error(error);
-    res.status(422).send(`Error registering citizen: ${error}`);
+    res
+      .status(422)
+      .send(
+        `Error registering citizen: ${error}, ${process.env.RPC_URL}, ${process.env.PRIVATE_KEY}`
+      );
   }
 });
 
@@ -24,7 +28,6 @@ const registerCitizen = async (
   citizenAddress: string,
   referrerAddress: string
 ) => {
-  console.log(process.env.INFURA_URL);
   const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
   const wallet = new ethers.Wallet(process.env.PRIVATE_KEY || "", provider);
   const reputationRegistryContract = new ethers.Contract(
