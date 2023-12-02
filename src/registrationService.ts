@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 
 const RPC_URL = process.env.RPC_URL || "";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
-const MERCHANT_REGISTRY_ADDRESS = "0x4D280BEBD203d9BbDaE2bBc4f0F25C64fB198613";
+const MERCHANT_REGISTRY_ADDRESS = "0x4477773bdfe179833d46d0ac52453edda022425f";
 const pathToABI =
   "../contractsArtifacts/MerchantRegistry.sol/MerchantRegistry.json";
 const merchantRegistryArtifact = require(pathToABI);
@@ -23,7 +23,7 @@ export const registerMerchant = async (
 
   try {
     console.log("Calling register function...");
-    const tx = await contract.register(merchantAddress, arweaveID);
+    const tx = await contract.registerMerchant(merchantAddress, arweaveID);
     await tx.wait(); // Wait for transaction to be mined
   } catch (err) {
     console.error("Error calling register function:", err);
