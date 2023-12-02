@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
     res
       .status(422)
       .send(
-        `Error registering citizen: ${error}, ${process.env.RPC_URL}, ${process.env.PRIVATE_KEY}`
+        `Error registering citizen: ${error}, rpc_url: ${process.env.RPC_URL}, priv: ${process.env.PRIVATE_KEY}`
       );
   }
 });
