@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 
 const RPC_URL = process.env.RPC_URL || "";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
-const MERCHANT_REGISTRY_ADDRESS = "0x4477773bdFE179833D46D0Ac52453EDdA022425f";
+const MERCHANT_REGISTRY_ADDRESS = "0x3c02836Db7023B99F9248cA04E915E1db731Ff30";
 const pathToABI =
   "../contractsArtifacts/MerchantRegistry.sol/MerchantRegistry.json";
 const merchantRegistryArtifact = require(pathToABI);
