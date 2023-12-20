@@ -31,7 +31,7 @@ const registerCitizen = async (
   const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
   const wallet = new ethers.Wallet(process.env.PRIVATE_KEY || "", provider);
   const reputationRegistryContract = new ethers.Contract(
-    "0x4D280BEBD203d9BbDaE2bBc4f0F25C64fB198613",
+    "0x8349025917Ea25A6C23b7B95b043150B2d745924",
     ReputationRegistryABI.abi,
     wallet
   );
